@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres
+    container_name: f1-db
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES-DB: postgres
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    container_name: f1-app
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
